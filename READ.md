@@ -73,4 +73,5 @@ Given: User had selected a city;
 When: The user selects more information about the city;
 Then: Charts about the events in that city are displayed;
 
-
+I will be using serverless functions to be able to allow users to gain access to the google api to receive information about the events.
+This will enable easier use for users to gain access to the information and security of the data being accessed. 
