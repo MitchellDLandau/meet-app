@@ -60,7 +60,7 @@ module.exports.getAccessToken = async (event) => {
 module.exports.getCalendarEvents = async (event) => {
   const access_token = decodeURIComponent(`${event.pathParameters.access_token}`);
   oAuth2Client.setCredentials({ access_token })
-  return new Promise ((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     calendar.events.list({
       calendarId: CALENDAR_ID,
       auth: oAuth2Client,
@@ -68,46 +68,31 @@ module.exports.getCalendarEvents = async (event) => {
       singleEvents: true,
       orderBy: "startTime",
     },
-    (error, response) => {
-      if(error){
-        reject(error);
-      } else {
-        resolve(response);
+      (error, response) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(response);
+        }
       }
-    }
     );
   })
-  .then((results) => {
-    return {
-      statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': true,
-      },
-      body: JSON.stringify({events: results.data.items})
-    }
-  })
-  .catch((error) => {
-    return {
-      statusCode: 500,
-      body: JSON.stringify(error),
-    };
-  });
+    .then((results) => {
+      return {
+        statusCode: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': true,
+        },
+        body: JSON.stringify({ events: results.data.items })
+      }
+    })
+    .catch((error) => {
+      return {
+        statusCode: 500,
+        body: JSON.stringify(error),
+      };
+    });
 };
 
-//   const getEvents = document.getElementById("getEvents");
-//   const events = document.getElementById("events");
-//   const getCalendarEvents = "YOUR_LAMBDA_GET_CALENDAR_EVENTS_ENDPOINT";
-  
-//   getEvents.onClick = function () {
-//     const { access_token } = JSON.parse(accessTokenElement.innerText);
-//     const eventRequest = getCalendarEvents + "/" + access_token;
-//     fetch(eventRequest)
-//       .then(function(response) {
-//         return response.json();
-//       })
-//       .then (function(json) {
-//         events.innerText = JSON.stringify(json, null, 2);
-//       });
-//   };
-// }
+
