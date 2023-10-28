@@ -18,5 +18,3 @@ describe('<App /> component', () => {
         expect(AppDOM.querySelector('#number-of-events')).toBeInTheDocument();
     })
 });
-
-//3

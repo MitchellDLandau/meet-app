@@ -62,5 +62,3 @@ describe('<event /> component', () => {
         expect(EventComponent.queryByText('Hide Details')).not.toBeInTheDocument();
     });
 });
-
-//7

@@ -22,5 +22,4 @@ describe('<NumberOfEvents /> component', () => {
         await userEvent.type(numberOfEventsTextBox, '{backspace}{backspace}16{Enter}');
         expect(numberOfEventsTextBox).toHaveValue('16')
     });
-
-})
+});
