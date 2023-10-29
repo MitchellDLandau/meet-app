@@ -1,9 +1,11 @@
 
 const NumberOfEvents = () => {
     return (
-        <input defaultValue="32" id="number-of-events">
-
-        </input>
+        <div>
+            <h4>Number of events</h4>
+            <input defaultValue="32" id="number-of-events">
+            </input>
+        </div>
     )
 }
 
