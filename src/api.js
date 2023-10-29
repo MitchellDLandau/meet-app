@@ -38,7 +38,7 @@ export const getEvents = async () => {
 
     if (token) {
         removeQuery();
-        const url = "https://7g67xfrpr6.execute-api.us-east-1.amazonaws.com/dev/api/get-events/%7Baccess_token%7D" + "/" + token;
+        const url = "https://7g67xfrpr6.execute-api.us-east-1.amazonaws.com/dev/api/get-events" + "/" + token;
         const response = await fetch(url);
         const result = await response.json();
         if (result) {
@@ -65,7 +65,7 @@ const removeQuery = () => {
 const getToken = async (code) => {
     const encodeCode = encodeURIComponent(code);
     const response = await fetch(
-        'https://7g67xfrpr6.execute-api.us-east-1.amazonaws.com/dev/api/token/%7Bcode%7D' + '/' + encodeCode
+        'https://7g67xfrpr6.execute-api.us-east-1.amazonaws.com/dev/api/token' + '/' + encodeCode
     );
     const { access_token } = await response.json();
     access_token && localStorage.setItem("access_token", access_token);
