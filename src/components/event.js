@@ -32,7 +32,7 @@ const Event = ({ event }) => {
                         }}>
                         Show Details
                     </button>
-                )};
+                )}
             </div>
         </li>
     );

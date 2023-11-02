@@ -1,10 +1,19 @@
 
-const NumberOfEvents = () => {
+const NumberOfEvents = ({ setCurrentNOE }) => {
+
+    const fetchNOE = (NOE) => {
+        const NOEValue = NOE.target.value;
+        setCurrentNOE(NOEValue);
+    }
+
     return (
-        <div>
+        <div id="number-of-events">
             <h4>Number of events</h4>
-            <input defaultValue="32" id="number-of-events">
-            </input>
+            <input
+                type="text"
+                defaultValue="32"
+                onChange={fetchNOE}
+            />
         </div>
     )
 }
