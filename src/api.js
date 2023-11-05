@@ -41,7 +41,6 @@ const getToken = async (code) => {
 };
 
 export const getEvents = async () => {
-    console.log("does this actually print to client side?");
     if (window.location.href.startsWith("http://localhost")) {
         return mockData;
     }
