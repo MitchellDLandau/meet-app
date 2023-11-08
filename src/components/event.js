@@ -12,7 +12,7 @@ const Event = ({ event }) => {
                     {event.description}
                 </details>
             ) : (
-                <details open={false} className="no-details">
+                <details open={false} className="no-details details-button">
                     {event.description}
                 </details>
             )}
