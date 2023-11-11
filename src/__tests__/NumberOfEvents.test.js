@@ -6,7 +6,10 @@ import NumberOfEvents from '../components/NumberOfEvents';
 describe('<NumberOfEvents /> component', () => {
     let NumberOfEventsComponent;
     beforeEach(() => {
-        NumberOfEventsComponent = render(<NumberOfEvents setCurrentNOE={() => { }} />);
+        NumberOfEventsComponent = render(
+            <NumberOfEvents
+                setCurrentNOE={() => { }}
+                setErrorAlert={() => { }} />);
         //unsure as to what I need to name the dummmy prop to fix test that breaks when adding integration test. 
     })
 

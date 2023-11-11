@@ -1,10 +1,22 @@
 
-const NumberOfEvents = ({ setCurrentNOE }) => {
+const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
 
     const fetchNOE = (NOE) => {
         const NOEValue = NOE.target.value;
         setCurrentNOE(NOEValue);
-    }
+
+        let errorText;
+        if (NOEValue <= 0) {
+            errorText = "You have to input a positive number. "
+        }
+        else if (isNaN(NOEValue)) {
+            errorText = "You have to input numbers only."
+        }
+        else {
+            errorText = ""
+        }
+        setErrorAlert(errorText);
+    };
 
     return (
         <div id="number-of-events">
