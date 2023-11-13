@@ -1,4 +1,5 @@
 import mockData from './mock-data';
+import NProgress from 'react';
 
 export const extractLocations = (events) => {
     const extractedLocations = events.map((event) => event.location);
@@ -44,6 +45,11 @@ export const getEvents = async () => {
     if (window.location.href.startsWith("http://localhost")) {
         return mockData;
     }
+    if (!navigator.online) {
+        const events = localStorage.getItem("lasEvents");
+        NProgress.done();
+        return events ? JSON.parse(events) : [];
+    }
     const token = await getAccessToken();
     if (token) {
         removeQuery();
@@ -51,6 +57,8 @@ export const getEvents = async () => {
         const response = await fetch(url);
         const result = await response.json();
         if (result) {
+            NProgress.done();
+            localStorage.setItem("lastEvents", JSON.stringify(result.events));
             return result.events;
         } else return null;
     }
