@@ -45,7 +45,7 @@ export const getEvents = async () => {
     if (window.location.href.startsWith("http://localhost")) {
         return mockData;
     }
-    if (!navigator.online) {
+    if (!navigator.onLine) {
         const events = localStorage.getItem("lasEvents");
         NProgress.done();
         return events ? JSON.parse(events) : [];
