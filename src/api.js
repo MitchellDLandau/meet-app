@@ -42,7 +42,9 @@ const getToken = async (code) => {
 };
 
 export const getEvents = async () => {
+    NProgress.start();
     if (window.location.href.startsWith("http://localhost")) {
+        NProgress.done();
         return mockData;
     }
     if (!navigator.onLine) {
@@ -65,12 +67,9 @@ export const getEvents = async () => {
             NProgress.done();
             localStorage.setItem("lastEvents", JSON.stringify(result.events));
             return result.events;
-        }
-        else {
-            NProgress.done();
-            return [];
-        }
-    };
+        } else return null;
+
+    }
 };
 
 export const getAccessToken = async () => {
