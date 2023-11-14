@@ -55,13 +55,22 @@ export const getEvents = async () => {
         removeQuery();
         const url = "https://7g67xfrpr6.execute-api.us-east-1.amazonaws.com/dev/api/get-events/" + token;
         const response = await fetch(url);
+        if (!response.ok) {
+            console.error('Network request failed:', response.statusText);
+            NProgress.done();
+            return null;
+        }
         const result = await response.json();
         if (result) {
             NProgress.done();
             localStorage.setItem("lastEvents", JSON.stringify(result.events));
             return result.events;
-        } else return null;
-    }
+        }
+        else {
+            NProgress.done();
+            return [];
+        }
+    };
 };
 
 export const getAccessToken = async () => {
