@@ -56,10 +56,11 @@ export const getEvents = async () => {
         const url = "https://7g67xfrpr6.execute-api.us-east-1.amazonaws.com/dev/api/get-events/" + token;
         const response = await fetch(url);
         const result = await response.json();
+        console.log("Result before the if statement:");
         if (result) {
             NProgress.done();
             localStorage.setItem("lastEvents", JSON.stringify(result.events));
-            const localStorageTest = "Does this get saved";
+            const localStorageTest = "located in 'if (result)' before the return";
             localStorage.setItem("localStorageTest", localStorageTest);
             console.log(result);
             return result.events;
