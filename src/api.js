@@ -61,6 +61,7 @@ export const getEvents = async () => {
             localStorage.setItem("lastEvents", JSON.stringify(result.events));
             const localStorageTest = "Does this get saved";
             localStorage.setItem("localStorageTest", localStorageTest);
+            console.log(result);
             return result.events;
         } else return null;
     }
