@@ -42,15 +42,12 @@ const getToken = async (code) => {
 };
 
 export const getEvents = async () => {
-    NProgress.start();
     if (window.location.href.startsWith("http://localhost")) {
-        NProgress.done();
         return mockData;
     }
     if (!navigator.onLine) {
         const events = localStorage.getItem("lastEvents");
         NProgress.done();
-        console.log("offline data: ", events)
         return events ? JSON.parse(events) : [];
     }
     const token = await getAccessToken();
@@ -58,20 +55,46 @@ export const getEvents = async () => {
         removeQuery();
         const url = "https://7g67xfrpr6.execute-api.us-east-1.amazonaws.com/dev/api/get-events/" + token;
         const response = await fetch(url);
-        if (!response.ok) {
-            console.error('Network request failed:', response.statusText);
-            NProgress.done();
-            return null;
-        }
         const result = await response.json();
         if (result) {
-            localStorage.setItem("lastEvents", JSON.stringify(result.events));
             NProgress.done();
+            localStorage.setItem("lastEvents", JSON.stringify(result.events));
             return result.events;
         } else return null;
-
     }
 };
+
+// export const getEvents = async () => {
+//     NProgress.start();
+//     if (window.location.href.startsWith("http://localhost")) {
+//         NProgress.done();
+//         return mockData;
+//     }
+//     if (!navigator.onLine) {
+//         const events = localStorage.getItem("lastEvents");
+//         NProgress.done();
+//         console.log("offline data: ", events)
+//         return events ? JSON.parse(events) : [];
+//     }
+//     const token = await getAccessToken();
+//     if (token) {
+//         removeQuery();
+//         const url = "https://7g67xfrpr6.execute-api.us-east-1.amazonaws.com/dev/api/get-events/" + token;
+//         const response = await fetch(url);
+//         if (!response.ok) {
+//             console.error('Network request failed:', response.statusText);
+//             NProgress.done();
+//             return null;
+//         }
+//         const result = await response.json();
+//         if (result) {
+//             NProgress.done();
+//             localStorage.setItem("lastEvents", JSON.stringify(result.events));
+//             return result.events;
+//         } else return null;
+
+//     }
+// };
 
 export const getAccessToken = async () => {
     const accessToken = localStorage.getItem('access_token');
