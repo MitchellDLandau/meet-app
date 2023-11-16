@@ -44,23 +44,25 @@ const getToken = async (code) => {
 export const getEvents = async () => {
     NProgress.start();
     if (window.location.href.startsWith("http://localhost")) {
+        console.log("after first if statement");
         NProgress.done();
         return mockData;
     }
     if (!navigator.onLine) {
         const events = localStorage.getItem("lastEvents");
+        console.log("after !navigator.onLine if statement");
         NProgress.done();
         return events ? JSON.parse(events) : [];
     }
     console.log("Start of getEvents");
     const token = await getAccessToken();
-    console.log("After getAccessToken");
+    console.log("After getAccessToken", token);
     localStorage.setItem("localStorageTest", "This should be save in local storage.");
     if (token) {
         removeQuery();
         const url = "https://7g67xfrpr6.execute-api.us-east-1.amazonaws.com/dev/api/get-events/" + token;
-        const response = await fetch(url);
-        const result = await response.json();
+        // const response = await fetch(url);
+        // const result = await response.json();
         console.log("Result before the if statement:");
         // if (result.data) {
         //     NProgress.done();
