@@ -67,7 +67,7 @@ export const getEvents = async () => {
             console.log("Before localStorage.setItem");
             localStorage.setItem("lastEvents", JSON.stringify(result.events));
             console.log("After localStorage.setItem");
-            return result.events;
+            return null;
         } else return null;
     }
 };
