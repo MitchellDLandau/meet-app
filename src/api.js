@@ -62,12 +62,12 @@ export const getEvents = async () => {
         const response = await fetch(url);
         const result = await response.json();
         console.log("Result before the if statement:");
-        if (result) {
+        if (result.data) {
             NProgress.done();
             console.log("Before localStorage.setItem");
-            localStorage.setItem("lastEvents", JSON.stringify(result.events));
+            localStorage.setItem("lastEvents", JSON.stringify(result.data));
             console.log("After localStorage.setItem");
-            return null;
+            return result.data.events;
         } else return null;
     }
 };
