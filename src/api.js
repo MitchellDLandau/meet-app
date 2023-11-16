@@ -60,7 +60,7 @@ export const getEvents = async () => {
     localStorage.setItem("localStorageTest", "This should be save in local storage.");
     if (token) {
         removeQuery();
-        const url = "https://7g67xfrpr6.execute-api.us-east-1.amazonaws.com/dev/api/get-events/" + token;
+        // const url = "https://7g67xfrpr6.execute-api.us-east-1.amazonaws.com/dev/api/get-events/" + token;
         // const response = await fetch(url);
         // const result = await response.json();
         console.log("Result before the if statement:");
