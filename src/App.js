@@ -42,6 +42,9 @@ const App = () => {
         setCurrentNOE={setCurrentNOE}
         setErrorAlert={setErrorAlert} />
       <EventList events={events} />
+      <div>
+        <h1>Does this add anything</h1>
+      </div>
     </div>
   );
 };
