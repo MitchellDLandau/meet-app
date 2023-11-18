@@ -43,7 +43,7 @@ const App = () => {
         setErrorAlert={setErrorAlert} />
       <EventList events={events} />
       <div>
-        <h1>Does this add anything</h1>
+        <h1>Does this add anything?</h1>
       </div>
     </div>
   );
