@@ -20,7 +20,7 @@ const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
 
     return (
         <div id="number-of-events">
-            <h4>Number of events testing deploy</h4>
+            <h4>Number of events</h4>
             <input
                 type="text"
                 defaultValue="32"
