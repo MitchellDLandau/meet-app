@@ -7,33 +7,30 @@ const Event = ({ event }) => {
             <div>{event.summary}</div>
             <div>{event.location}</div>
             <div>{event.created}</div>
-            {showDetails ? (
-                <details open={true} className="details-shown">
-                    {event.description}
-                </details>
-            ) : (
-                <details open={false} className="no-details details-button">
-                    {event.description}
-                </details>
-            )}
-            <div>
-                {showDetails ? (
-                    <button
-                        onClick={() => {
-                            setShowDetails(false);
-                        }}
-                    >
-                        Hide Details
-                    </button>
+            {showDetails ?
+                (
+                    <div>
+                        <p className="details-shown">
+                            {event.description}
+                        </p>
+                        <button
+                            onClick={() => {
+                                setShowDetails(false);
+                            }}
+                        >
+                            Hide Details
+                        </button>
+                    </div>
                 ) : (
                     <button
+                        className="no-details"
                         onClick={() => {
                             setShowDetails(true);
                         }}>
                         Show Details
                     </button>
-                )}
-            </div>
+                )
+            }
         </li>
     );
 };
