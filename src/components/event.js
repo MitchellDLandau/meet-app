@@ -14,6 +14,7 @@ const Event = ({ event }) => {
                             {event.description}
                         </p>
                         <button
+                            className="details-button"
                             onClick={() => {
                                 setShowDetails(false);
                             }}
@@ -23,7 +24,7 @@ const Event = ({ event }) => {
                     </div>
                 ) : (
                     <button
-                        className="no-details"
+                        className="no-details details-button"
                         onClick={() => {
                             setShowDetails(true);
                         }}>
