@@ -94,3 +94,16 @@ input[type="number"] {
   width: 250px;
   z-index: 1000;
 }
+
+
+@media (max-width: 768px) {
+  .charts-container {
+  display: flex;
+    flex-direction: column; /* Change to a single column layout */
+    grid-template-columns: none;
+}}
+
+.charts-container {
+  display: flex;
+  grid-template-columns: 1fr 1fr;
+}
