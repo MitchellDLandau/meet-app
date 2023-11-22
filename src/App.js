@@ -31,7 +31,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Meet Up testing deploy</h1>
+      <h1>Meet Up</h1>
       <div className="alerts-container">
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
         {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
