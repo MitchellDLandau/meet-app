@@ -49,6 +49,7 @@ const App = () => {
           events={events} />
         <EventGenreChart
           events={events} />
+        {/* Charts have been added to show data visualization. */}
       </div>
       <EventList events={events} />
     </div>
